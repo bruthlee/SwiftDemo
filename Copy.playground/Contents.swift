@@ -48,15 +48,33 @@ print("[array1] = \(array1), [array2] = \(array2), [array3] = \(array3)")
 var dic1 = ["key1":"value1", "key2":"value2"]
 var dic2 = dic1
 dic1["key1"] = "value111"
-print("dic1[key1] = \(dic1["key1"]), dic2[key1] = \(dic2["key1"])")
+print("dic1[key1] = \(String(describing: dic1["key1"])), dic2[key1] = \(String(describing: dic2["key1"]))")
 
 /// 结构体拷贝
 struct Rectange {
-    var width : Double
-    var height: Double
+    var width = 0
+    var height = 0
 }
 var rectange1 = Rectange(width: 10, height:20)
 var rectange2 = rectange1
 rectange2.width = 100
 rectange2.height = 200
 print("[rectange1] = \(rectange1), [rectange2] = \(rectange2)")
+
+/// 引用类型不做拷贝,指向同一个地址
+class Shape {
+    var rectange = Rectange()
+    var length = 0
+}
+let shape1 = Shape()
+shape1.rectange = rectange1
+shape1.length = 10
+let shape2 = shape1
+shape2.length = 20
+shape2.rectange = rectange2
+print("[shape1] \(shape1.rectange), \(shape1.length)")
+print("[shape2] \(shape2.rectange), \(shape2.length)")
+
+if shape1 === shape2 {
+    print("shape1 and shape2 refer to the same Shape instance & address.")
+}
