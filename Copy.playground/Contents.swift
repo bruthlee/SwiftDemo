@@ -78,3 +78,25 @@ print("[shape2] \(shape2.rectange), \(shape2.length)")
 if shape1 === shape2 {
     print("shape1 and shape2 refer to the same Shape instance & address.")
 }
+if array1 == array2 {
+    print("array1 == array2")
+}
+else {
+    print("array1 != array2")
+}
+
+/**
+ “等价于”（用三个等号表示，===）与“等于”（用两个等号表示，==）的不同：
+ 
+ “等价于”表示两个类类型（class type）的常量或者变量引用同一个类实例。
+ “等于”表示两个实例的值“相等”或“相同”，判定时要遵照设计者定义的评判标准，因此相对于“相等”来说，这是一种更加合适的叫法
+ */
+/// 值类型不能用引用类型===判断
+//if array1 === array2 {
+//    print("array1 == array2")
+//}
+
+/// 引用类型不能用值类型==判断
+//if shape1 == shape2 {
+//    print("shape1 === shape2")
+//}
