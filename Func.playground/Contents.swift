@@ -196,3 +196,53 @@ print("sortedNames3 is \(namesSorted3)")
 //  通过String自带>（大于号字符串实现）方法
 let namesSorted4 = names.sorted(by: >)
 print("sortedNames4 is \(namesSorted4)")
+
+/// 在实例方法中修改值类型
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveByX(x deltaX: Double, y deltaY: Double) {
+        x += deltaX
+        y += deltaY
+    }
+}
+var somePoint = Point(x: 1.0, y: 1.0)
+somePoint.moveByX(x: 2.0, y: 3.0)
+print("The point is now at (\(somePoint.x), \(somePoint.y))")
+
+/// 不能在结构体类型的常量（a constant of structure type）上调用可变方法，因为其属性不能被改变，即使属性是变量属性
+//let fixedPoint = Point(x: 3.0, y: 3.0) //此时是常量而非变量
+//fixedPoint.moveByX(2.0, y: 3.0)
+
+/// 可变方法能够赋给隐含属性self一个全新的实例。上面Point的例子可以用下面的方式改写：
+struct OtherPoint {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+        self = OtherPoint(x: x + deltaX, y: y + deltaY)
+    }
+}
+var otherPoint = OtherPoint(x: 1.0, y: 1.0)
+print("otherPoint is \(otherPoint)")
+otherPoint.moveBy(x: 2.0, y: 3.0)
+print("otherPoint is \(otherPoint)")
+print("The point is now at (\(otherPoint.x), \(otherPoint.y))")
+
+/// 枚举的可变方法可以把self设置为同一枚举类型中不同的成员
+enum TriStateSwitch {
+    case Off, Low, High
+    mutating func next() {
+        switch self {
+        case .Off:
+            self = .Low
+        case .Low:
+            self = .High
+        case .High:
+            self = .Off
+        }
+    }
+}
+var ovenLight = TriStateSwitch.Low
+print("ovenlight 1 is \(ovenLight)")
+ovenLight.next()
+print("ovenlight 2 is \(ovenLight)")
+ovenLight.next()
+print("ovenlight 3 is \(ovenLight)")

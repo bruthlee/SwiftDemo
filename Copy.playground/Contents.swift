@@ -48,55 +48,15 @@ print("[array1] = \(array1), [array2] = \(array2), [array3] = \(array3)")
 var dic1 = ["key1":"value1", "key2":"value2"]
 var dic2 = dic1
 dic1["key1"] = "value111"
-print("dic1[key1] = \(String(describing: dic1["key1"])), dic2[key1] = \(String(describing: dic2["key1"]))")
+print("dic1[key1] = \(dic1["key1"]), dic2[key1] = \(dic2["key1"])")
 
 /// 结构体拷贝
 struct Rectange {
-    var width = 0
-    var height = 0
+    var width : Double
+    var height: Double
 }
 var rectange1 = Rectange(width: 10, height:20)
 var rectange2 = rectange1
 rectange2.width = 100
 rectange2.height = 200
 print("[rectange1] = \(rectange1), [rectange2] = \(rectange2)")
-
-/// 引用类型不做拷贝,指向同一个地址
-class Shape {
-    var rectange = Rectange()
-    var length = 0
-}
-let shape1 = Shape()
-shape1.rectange = rectange1
-shape1.length = 10
-let shape2 = shape1
-shape2.length = 20
-shape2.rectange = rectange2
-print("[shape1] \(shape1.rectange), \(shape1.length)")
-print("[shape2] \(shape2.rectange), \(shape2.length)")
-
-if shape1 === shape2 {
-    print("shape1 and shape2 refer to the same Shape instance & address.")
-}
-if array1 == array2 {
-    print("array1 == array2")
-}
-else {
-    print("array1 != array2")
-}
-
-/**
- “等价于”（用三个等号表示，===）与“等于”（用两个等号表示，==）的不同：
- 
- “等价于”表示两个类类型（class type）的常量或者变量引用同一个类实例。
- “等于”表示两个实例的值“相等”或“相同”，判定时要遵照设计者定义的评判标准，因此相对于“相等”来说，这是一种更加合适的叫法
- */
-/// 值类型不能用引用类型===判断
-//if array1 === array2 {
-//    print("array1 == array2")
-//}
-
-/// 引用类型不能用值类型==判断
-//if shape1 == shape2 {
-//    print("shape1 === shape2")
-//}
