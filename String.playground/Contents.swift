@@ -253,3 +253,7 @@ print("---")
 for scalar in dogString.unicodeScalars {
     print("\(scalar) ")
 }
+
+let dog1 = "dog"
+let dog2 = "dog"
+print("dog1 == dog2: \(dog1 == dog2)")

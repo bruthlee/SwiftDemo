@@ -91,3 +91,81 @@ struct Size {
 }
 let size = Size(width: 20.0, height: 50.0)
 print("size is \(size)")
+
+/**
+ 可失败构造器
+ */
+class Product {
+    let name: String
+    init?(name: String) {
+        if name.isEmpty {
+            return nil  //可失败构造器
+        }
+        self.name = name
+    }
+}
+
+class CartItem: Product {
+    let quality: Int
+    init?(name: String, quality: Int) {
+        if quality < 1 {
+            return nil
+        }
+        
+        self.quality = quality
+        super.init(name: name)
+    }
+}
+
+//  通过传入一个非空字符串 name 以及一个值大于等于 1 的 quantity 来创建一个 CartItem 实例，那么构造方法能够成功被执行
+if let twoSocks = CartItem(name: "sock", quality: 2) {
+    print("Item: \(twoSocks.name), quantity: \(twoSocks.quality)")
+}
+//  以一个值为 0 的 quantity 来创建一个 CartItem 实例，那么将导致 CartItem 构造器失败
+if let zeroShirts = CartItem(name: "shirt", quality: 0) {
+    print("Item: \(zeroShirts.name), quantity: \(zeroShirts.quality)")
+} else {
+    print("Unable to initialize zero shirts with 0 quality")
+}
+//  传入一个值为空字符串的 name来创建一个 CartItem 实例，那么将导致父类 Product 的构造过程失败
+if let oneUnnamed = CartItem(name: "", quality: 1) {
+    print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quality)")
+} else {
+    print("Unable to initialize one unnamed product")
+}
+
+//  定义一个结构体Checkerboard，它构建了西洋跳棋游戏的棋盘
+struct Checkerboard {
+    let colors: [Bool] = {
+        var temp = [Bool]()
+        var isBlack = false
+        for i in 1...8 {
+            for j in 1...8 {
+                temp.append(isBlack)
+                isBlack = !isBlack
+            }
+            isBlack = !isBlack
+        }
+        return temp
+    }()
+    
+    func squareIsBlack(row: Int, column: Int) -> Bool {
+        return colors[8*row + column]
+    }
+    
+    func desc() -> Void {
+        print("colors is:")
+        var start = 0
+        var end = 7
+        for i in 0...7 {
+            print("\(colors[start...end])")
+            start = end + 1;
+            end = start + 7;
+        }
+    }
+}
+
+let checkerBoard = Checkerboard()
+checkerBoard.desc()
+print("checkerBoard[0][1] is \(checkerBoard.squareIsBlack(row: 0, column: 1))")
+print("checkerBoard[7][7] is \(checkerBoard.squareIsBlack(row: 7, column: 7))")
