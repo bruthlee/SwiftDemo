@@ -14,7 +14,7 @@ import UIKit
 //  析构器实践
 //      Bank类管理一种虚拟硬币，确保流通的硬币数量永远不可能超过 10,000。在游戏中有且只能有一个Bank存在，因此Bank用类来实现，并使用类型属性和类型方法来存储和管理其当前状态
 class Bank {
-    static var coins = 10_1000
+    static var coins = 1_0000
     
     static func distribute(coins numberOfCoinsRequested: Int) -> Int {
         let num = min(coins, numberOfCoinsRequested)
@@ -28,4 +28,30 @@ class Bank {
 }
 
 //      Player类描述了游戏中的一个玩家。每一个玩家在任意时间都有一定数量的硬币存储在他们的钱包中。这通过玩家的coinsInPurse属性来表示
-
+class Player {
+    var coins: Int
+    
+    init(coins: Int) {
+        self.coins = Bank.distribute(coins: coins)
+    }
+    
+    func win(coins: Int) {
+        self.coins += Bank.distribute(coins: coins)
+    }
+    
+    deinit {
+        Bank.receive(coins: coins)
+    }
+}
+var playerOne: Player? = Player(coins: 100)
+print("A new playerOne has joined the game with \(playerOne!.coins) coins")
+print("There are now \(Bank.coins) coins left in the bank")
+playerOne!.win(coins: 2_000)
+print("PlayerOne won 2000 coins & now has \(playerOne!.coins) coins")
+print("The bank now only has \(Bank.coins) coins left")
+var playerTwo: Player? = Player(coins: 1000)
+print("A new playerTwo has joined the game with \(playerTwo!.coins) coins")
+print("There are now \(Bank.coins) coins left in the bank")
+playerOne = nil
+print("PlayerOne has left the game")
+print("The bank now has \(Bank.coins) coins")
