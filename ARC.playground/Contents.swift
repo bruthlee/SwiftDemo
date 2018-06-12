@@ -93,6 +93,7 @@ var holly: Customer?
 holly = Customer(name: "creditcard-customer")
 holly!.card = CreditCard(number: 1234_5678_9012_3456, customer: holly!)
 holly = nil
+print("==========================")
 
 /**
  *  无主引用以及隐式解析可选属性
@@ -105,6 +106,9 @@ class Country {
         self.name = name
         self.capitalCity = City(name: capitalName, country: self)
     }
+    deinit {
+        print("Country \(name) is being deinitialized.")
+    }
 }
 class City {
     let name: String
@@ -114,3 +118,101 @@ class City {
         self.country = country
     }
 }
+var country = Country(name: "Canada", capitalName: "Ottawa")
+print("\(country.name)'s capital city is called \(country.capitalCity.name)")
+print("==========================")
+
+/**
+ *  闭包引起的循环强引用
+        Swift 提供了一种优雅的方法来解决这个问题，称之为闭包捕获列表（closure capture list）
+ */
+class HTMLElement {
+    let name: String
+    let text: String?
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+    deinit {
+        print("\(name) is being deinitialized with text: \(text).")
+    }
+    lazy var asHTML: () -> String = {
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        }
+        else {
+            return "<\(self.name) />"
+        }
+    }
+}
+let heading = HTMLElement(name: "h1")
+let defaultText = "some default text"
+heading.asHTML = {
+    return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
+}
+print(heading.asHTML())
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
+var html: String? = paragraph!.asHTML()
+print(html)
+paragraph = nil
+print(paragraph)
+print(html)
+html = nil
+print(html)
+print("paragraph = nil, html = nil, 但是闭包的强引用导致HTMLElement析构函数没有执行，没有真正销毁实例")
+print("==========================")
+
+/**
+ *  解决闭包引起的循环强引用
+        在定义闭包时同时定义捕获列表作为闭包的一部分，通过这种方式可以解决闭包和类实例之间的循环强引用。捕获列表定义了闭包体内捕获一个或者多个引用类型的规则。跟解决两个类实例间的循环强引用一样，声
+        明每个捕获的引用为弱引用或无主引用，而不是强引用。应当根据代码关系来决定使用弱引用还是无主引用
+ */
+
+/**
+ *  定义捕获列表
+ 捕获列表中的每一项都由一对元素组成，一个元素是weak或unowned关键字，另一个元素是类实例的引用（例如self）或初始化过的变量（如delegate = self.delegate!）。这些项在方括号中用逗号分开。
+ 
+ 如果闭包有参数列表和返回类型，把捕获列表放在它们前面：
+ lazy var someClosure: (Int, String) -> String = {
+     [unowned self, weak delegate = self.delegate!] (index: Int, stringToProcess: String) -> String in
+     // 这里是闭包的函数体
+ }
+ 
+ 如果闭包没有指明参数列表或者返回类型，即它们会通过上下文推断，那么可以把捕获列表和关键字in放在闭包最开始的地方：
+ 
+ lazy var someClosure: () -> String = {
+    [unowned self, weak delegate = self.delegate!] in
+    // 这里是闭包的函数体
+ }
+ */
+
+/**
+ *  在闭包和捕获的实例总是互相引用并且总是同时销毁时，将闭包内的捕获定义为无主引用。
+        相反的，在被捕获的引用可能会变为nil时，将闭包内的捕获定义为弱引用。弱引用总是可选类型，并且当引用的实例被销毁后，弱引用的值会自动置为nil。这使我们可以在闭包体内检查它们是否存在。
+ 
+ 注意
+    如果被捕获的引用绝对不会变为nil，应该用无主引用，而不是弱引用
+ */
+class HTMLOtherElement {
+    let name: String
+    let text: String?
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+    deinit {
+        print("\(name) ------ is being deinitialized.")
+    }
+    lazy var asHTML: () -> String = {
+        [unowned self] in
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        }
+        else {
+            return "<\(self.name) />"
+        }
+    }
+}
+var otherParagraph: HTMLOtherElement? = HTMLOtherElement(name: "p", text: "hello, world")
+print(otherParagraph!.asHTML())
+otherParagraph = nil //通过无主引用解决闭包强引用
