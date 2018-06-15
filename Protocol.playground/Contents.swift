@@ -44,13 +44,13 @@ struct SimpleStruct : ExampleProtocol {
     
     //mutating 关键字用来标记一个会修改结构体的方法
     mutating func adjust() {
-        simpleDescription += " (adjused)"
+        simpleDescription += " (struct adjused)"
     }
     
 }
 var simpleStruct = SimpleStruct()
 simpleStruct.adjust()
-print("struct des : ", simpleStruct.simpleDescription)
+print(simpleStruct.simpleDescription)
 
 
 /**
