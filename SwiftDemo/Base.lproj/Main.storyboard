@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8O6-YJ-eFV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8O6-YJ-eFV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="ChalkboardSE.ttc">
-            <string>ChalkboardSE-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Swift-->
         <scene sceneID="ed2-DZ-iR8">
@@ -112,7 +107,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Foot" id="aL5-nY-L3V">
+                            <tableViewSection headerTitle="Game" id="aL5-nY-L3V">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="1vF-Or-vEb" style="IBUITableViewCellStyleDefault" id="Z3e-fW-UNI">
                                         <rect key="frame" x="0.0" y="343.5" width="375" height="44"/>
@@ -121,7 +116,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="System fonts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1vF-Or-vEb">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Simple Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1vF-Or-vEb">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
@@ -130,6 +125,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CIa-UF-wcO" kind="show" id="qd8-oK-cDw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -344,6 +342,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVp-Jx-o3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079" y="-238"/>
+        </scene>
+        <!--Simple Game-->
+        <scene sceneID="m6h-e9-Yoc">
+            <objects>
+                <viewController title="Simple Game" id="CIa-UF-wcO" customClass="GameTestController" customModule="SwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="60w-Pe-06P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imY-1W-693">
+                                <rect key="frame" x="20" y="20" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.22352941179999999" green="0.55294117649999996" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8ro-O5-7Qy"/>
+                                </constraints>
+                                <state key="normal" title="Lakes And Ladders"/>
+                                <connections>
+                                    <action selector="touchSnakesAndLaddersTest:" destination="CIa-UF-wcO" eventType="touchUpInside" id="6Ol-OX-fbe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="imY-1W-693" firstAttribute="leading" secondItem="3Ju-7g-u0x" secondAttribute="leading" constant="20" id="IPJ-t2-HVi"/>
+                            <constraint firstItem="3Ju-7g-u0x" firstAttribute="trailing" secondItem="imY-1W-693" secondAttribute="trailing" constant="20" id="kkA-ui-H53"/>
+                            <constraint firstItem="imY-1W-693" firstAttribute="top" secondItem="3Ju-7g-u0x" secondAttribute="top" constant="20" id="lnM-zW-l1J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Ju-7g-u0x"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9RT-BI-CLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="657" y="503"/>
         </scene>
     </scenes>
 </document>

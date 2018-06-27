@@ -92,3 +92,6 @@ var simpleDouble = -10.0
 simpleDouble.absoluteValue()
 print(simpleDouble)
 
+@objc protocol ProtocolTest {
+    @objc optional func showMessage()
+}

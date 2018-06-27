@@ -15,6 +15,12 @@
 		BDE02B05206746E700AED543 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE02B03206746E700AED543 /* Main.storyboard */; };
 		BDE02B07206746E700AED543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE02B06206746E700AED543 /* Assets.xcassets */; };
 		BDE02B0A206746E700AED543 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE02B08206746E700AED543 /* LaunchScreen.storyboard */; };
+		BDEB423A20D60D77006283D0 /* DiceGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEB423920D60D77006283D0 /* DiceGame.swift */; };
+		BDEB423C20D60DBA006283D0 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEB423B20D60DBA006283D0 /* RandomGenerator.swift */; };
+		BDEB423E20D60F09006283D0 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEB423D20D60F09006283D0 /* Dice.swift */; };
+		BDEB424020D6166B006283D0 /* SnakesAndLadders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEB423F20D6166B006283D0 /* SnakesAndLadders.swift */; };
+		BDEB424220D61835006283D0 /* DiceGameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEB424120D61835006283D0 /* DiceGameTracker.swift */; };
+		BDEB424420D618F0006283D0 /* GameTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEB424320D618F0006283D0 /* GameTestController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		BDE02B06206746E700AED543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDE02B09206746E700AED543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDE02B0B206746E700AED543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDEB423920D60D77006283D0 /* DiceGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceGame.swift; sourceTree = "<group>"; };
+		BDEB423B20D60DBA006283D0 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
+		BDEB423D20D60F09006283D0 /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
+		BDEB423F20D6166B006283D0 /* SnakesAndLadders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakesAndLadders.swift; sourceTree = "<group>"; };
+		BDEB424120D61835006283D0 /* DiceGameTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceGameTracker.swift; sourceTree = "<group>"; };
+		BDEB424320D618F0006283D0 /* GameTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTestController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2C927F2081052700875399 /* CCDemo.swift */,
+				BDEB423720D60D53006283D0 /* Game */,
 				BD6714B3207FB3D600656A0C /* Fonts */,
 				BD6714B2207FAF8500656A0C /* MutilThread */,
 				BD6714B4207FB3F200656A0C /* BaseViewController.swift */,
@@ -97,6 +110,27 @@
 			path = SwiftDemo;
 			sourceTree = "<group>";
 		};
+		BDEB423720D60D53006283D0 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				BDEB423B20D60DBA006283D0 /* RandomGenerator.swift */,
+				BDEB423820D60D62006283D0 /* DiceGame */,
+				BDEB424320D618F0006283D0 /* GameTestController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		BDEB423820D60D62006283D0 /* DiceGame */ = {
+			isa = PBXGroup;
+			children = (
+				BDEB423D20D60F09006283D0 /* Dice.swift */,
+				BDEB423920D60D77006283D0 /* DiceGame.swift */,
+				BDEB423F20D6166B006283D0 /* SnakesAndLadders.swift */,
+				BDEB424120D61835006283D0 /* DiceGameTracker.swift */,
+			);
+			path = DiceGame;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,12 +159,12 @@
 			attributes = {
 				CLASSPREFIX = CC;
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "CCVideo Co.,Ltd. All rights reserved.";
 				TargetAttributes = {
 					BDE02AFB206746E700AED543 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -170,11 +204,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDEB423C20D60DBA006283D0 /* RandomGenerator.swift in Sources */,
+				BDEB423A20D60D77006283D0 /* DiceGame.swift in Sources */,
+				BDEB423E20D60F09006283D0 /* Dice.swift in Sources */,
 				BD2C92802081052700875399 /* CCDemo.swift in Sources */,
 				BDE02B00206746E700AED543 /* AppDelegate.swift in Sources */,
+				BDEB424220D61835006283D0 /* DiceGameTracker.swift in Sources */,
 				BD6714B9207FBA3F00656A0C /* CCOperationController.swift in Sources */,
 				BD6714B5207FB3F200656A0C /* BaseViewController.swift in Sources */,
+				BDEB424420D618F0006283D0 /* GameTestController.swift in Sources */,
 				BD6714B7207FB4F300656A0C /* CCFontController.swift in Sources */,
+				BDEB424020D6166B006283D0 /* SnakesAndLadders.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +254,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -221,6 +262,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -271,6 +313,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -278,6 +321,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -311,14 +355,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9UW4R5B4KS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.SwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -326,14 +371,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9UW4R5B4KS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.SwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

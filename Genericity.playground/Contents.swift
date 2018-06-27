@@ -16,9 +16,8 @@ func repeatItem<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
     }
     return result
 }
-
-repeatItem(repeating: "knock", numberOfTimes: 4)
-
+let repeatItems = repeatItem(repeating: "knock", numberOfTimes: 4)
+print("repeatItems is \(repeatItems)")
 
 /**
  也可以创建泛型函数、方法、类、枚举和结构体
@@ -46,7 +45,8 @@ func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
         }
         return false
 }
-anyCommonElements([1, 2, 3], [4])
+let anyCommonResult = anyCommonElements([1, 2, 3], [4])
+print("anyCommonResult = \(anyCommonResult)")
 
 /**
  修改 anyCommonElements(_:_:) 函数来创建一个函数，返回一个数组，内容是两个序列的共有元素
@@ -63,4 +63,61 @@ func containElements<T: Sequence, U: Sequence>(_ left: T, _ right: U) -> [Any]
     }
     return result
 }
-containElements([1,2,3,4], [2,5])
+let containResult = containElements([1,2,3,4], [2,5])
+print("containResult = \(containResult)")
+
+/**
+ *  交换两个相同类型的值
+ */
+func swapTwoValues<T>(_ value1: inout T, _ value2: inout T) {
+    let temp = value2
+    value2 = value1
+    value1 = temp
+}
+var swapValue1 = "a"
+var swapValue2 = "b"
+swapTwoValues(&swapValue1, &swapValue2)
+print("'a' & 'b' swap result is '\(swapValue1)' & '\(swapValue2)'")
+
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+print("stackOfStrings is \(stackOfStrings)")
+var fromTheTop = stackOfStrings.pop()
+print("stackOfStrings is \(stackOfStrings), and \(fromTheTop) is poped.")
+fromTheTop = stackOfStrings.pop()
+print("stackOfStrings is \(stackOfStrings), and \(fromTheTop) is poped.")
+fromTheTop = stackOfStrings.pop()
+print("stackOfStrings is \(stackOfStrings), and \(fromTheTop) is poped.")
+fromTheTop = stackOfStrings.pop()
+print("stackOfStrings is \(stackOfStrings), and \(fromTheTop) is poped.")
+print("============================")
+
+/**
+ 扩展一个泛型类型
+ */
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+}
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+print("stackOfStrings is \(stackOfStrings)")
+if let topItem = stackOfStrings.topItem {
+    print("stackOfStrings topItem is \(topItem)")
+}
+else {
+    print("stackOfStrings topItem is nil")
+}
