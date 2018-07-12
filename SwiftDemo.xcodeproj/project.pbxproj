@@ -11,6 +11,7 @@
 		BD6714B5207FB3F200656A0C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6714B4207FB3F200656A0C /* BaseViewController.swift */; };
 		BD6714B7207FB4F300656A0C /* CCFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6714B6207FB4F300656A0C /* CCFontController.swift */; };
 		BD6714B9207FBA3F00656A0C /* CCOperationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6714B8207FBA3F00656A0C /* CCOperationController.swift */; };
+		BDAC0CA520F5E4840003CF08 /* ArithmeticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC0CA420F5E4840003CF08 /* ArithmeticController.swift */; };
 		BDE02B00206746E700AED543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE02AFF206746E700AED543 /* AppDelegate.swift */; };
 		BDE02B05206746E700AED543 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDE02B03206746E700AED543 /* Main.storyboard */; };
 		BDE02B07206746E700AED543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE02B06206746E700AED543 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		BD6714B4207FB3F200656A0C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BD6714B6207FB4F300656A0C /* CCFontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCFontController.swift; sourceTree = "<group>"; };
 		BD6714B8207FBA3F00656A0C /* CCOperationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCOperationController.swift; sourceTree = "<group>"; };
+		BDAC0CA420F5E4840003CF08 /* ArithmeticController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticController.swift; sourceTree = "<group>"; };
 		BDE02AFC206746E700AED543 /* SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE02AFF206746E700AED543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDE02B04206746E700AED543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				BD2C927F2081052700875399 /* CCDemo.swift */,
+				BDAC0CA320F5E2D50003CF08 /* Arithmetic */,
 				BDEB423720D60D53006283D0 /* Game */,
 				BD6714B3207FB3D600656A0C /* Fonts */,
 				BD6714B2207FAF8500656A0C /* MutilThread */,
@@ -79,6 +82,14 @@
 				BD6714B6207FB4F300656A0C /* CCFontController.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BDAC0CA320F5E2D50003CF08 /* Arithmetic */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC0CA420F5E4840003CF08 /* ArithmeticController.swift */,
+			);
+			path = Arithmetic;
 			sourceTree = "<group>";
 		};
 		BDE02AF3206746E700AED543 = {
@@ -211,6 +222,7 @@
 				BDE02B00206746E700AED543 /* AppDelegate.swift in Sources */,
 				BDEB424220D61835006283D0 /* DiceGameTracker.swift in Sources */,
 				BD6714B9207FBA3F00656A0C /* CCOperationController.swift in Sources */,
+				BDAC0CA520F5E4840003CF08 /* ArithmeticController.swift in Sources */,
 				BD6714B5207FB3F200656A0C /* BaseViewController.swift in Sources */,
 				BDEB424420D618F0006283D0 /* GameTestController.swift in Sources */,
 				BD6714B7207FB4F300656A0C /* CCFontController.swift in Sources */,
