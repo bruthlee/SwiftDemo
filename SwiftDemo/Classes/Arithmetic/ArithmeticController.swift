@@ -31,10 +31,9 @@ class ArithmeticController: BaseViewController, UITableViewDataSource, UITableVi
     
     //  arithmetic func
     @objc private func twoNumSum() {
-        print("=============================")
-        print("two number sum.")
         let nums = [2, 7, 11, 15]
         let target = 13
+        print("数据源：\(nums), 目标值：\(target)")
         
         //method 1
         print("暴力方法，空间复杂度O(1), ")
@@ -49,11 +48,35 @@ class ArithmeticController: BaseViewController, UITableViewDataSource, UITableVi
         }
         
         //method 2
+        print("两遍哈希表，时间复杂度：O(n)， 空间复杂度：O(n)")
         var map = [Int:Int]()
         for index in 0..<numsCount {
             map[nums[index]] = index
         }
+        for i in 0..<numsCount {
+            let sub = target - nums[i]
+            var v = 0
+            if map.keys.contains(sub), map[sub] != i {
+                v = map[sub]!
+                print("[\(i)]\(nums[i]) + [\(v)]\(sub) = \(target)")
+                break
+            }
+        }
         
+        //method 3
+        print("一遍哈希表, 时间复杂度：O(n)， 空间复杂度：O(n)")
+        var dic = [Int:Int]()
+        var v = 0
+        for index in 0..<numsCount {
+            let dis = target - nums[index]
+            if dic.keys.contains(dis) {
+                v = dic[dis]!
+                print("[\(index)]\(nums[index]) + [\(v)]\(dis) = \(target)")
+                break
+            }
+            dic[nums[index]] = index
+        }
+        print("dic = \(dic)")
     }
     
     //  table view
@@ -93,6 +116,8 @@ class ArithmeticController: BaseViewController, UITableViewDataSource, UITableVi
         let section = indexPath.section
         if section < dataSource.count {
             let subject: ArithmeticSubject = dataSource[section] as! ArithmeticSubject
+            print("================================================")
+            print("\(subject.title)")
             let action = Selector.init(subject.action)
             self.perform(action)
         }
