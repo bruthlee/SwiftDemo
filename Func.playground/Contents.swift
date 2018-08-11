@@ -246,3 +246,40 @@ ovenLight.next()
 print("ovenlight 2 is \(ovenLight)")
 ovenLight.next()
 print("ovenlight 3 is \(ovenLight)")
+
+
+class InternalClass {
+    func show() -> Int {
+        print("This is a internal function.")
+        return 1
+    }
+}
+private class PrivateClass {
+    func show() -> Int {
+        print("This is a private function.")
+        return 2
+    }
+}
+func multiFunc() -> (a: Int, b: Int) {
+    print("This is a multi-function test.")
+    let inc = InternalClass()
+    let prc = PrivateClass()
+    return (inc.show(), prc.show())
+}
+print("multiFunc is \(multiFunc())")
+
+struct TrackedString {
+    private(set) var numberOfEdits = 0
+    var value: String = "" {
+        didSet {
+            numberOfEdits += 1
+        }
+    }
+}
+var trackedStr = TrackedString()
+trackedStr.value = "1value"
+//trackedStr.numberOfEdits = 10
+print("trackedStr(\(trackedStr.value)) has edited number is \(trackedStr.numberOfEdits).")
+trackedStr.value += " 2value"
+trackedStr.value += " 3value"
+print("trackedStr(\(trackedStr.value)) has edited number is \(trackedStr.numberOfEdits).")
